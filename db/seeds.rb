@@ -14,6 +14,24 @@ posts = Post.all
   )
 end
 
+Post.find_or_create_by(
+  title: "Unique Post!!!...!!!",
+  body: "The unique body for the unique post!!--!!..!!"
+)
+
+unique_post = nil
+
+posts.each do |post|
+  if post.title == "Unique Post!!!...!!!"
+    unique_post = post
+  end
+end
+
+Comment.find_or_create_by(
+  post: unique_post,
+  body: "-----Unique Comment-------"
+)
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
