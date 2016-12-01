@@ -4,6 +4,9 @@ source 'https://rubygems.org'
  gem 'rails', '4.2.5'
  gem 'bootstrap-sass'
 
+ #used for encrypting User passwords
+ gem 'bcrypt'
+ 
  group :production do
    gem 'pg'
    gem 'rails_12factor'
