@@ -66,4 +66,8 @@ class PostsController < ApplicationController
       redirect_to [post.topic, post]
     end
   end
+
+  def create_vote
+    user.votes.create(post: self, value: 1)
+  end
 end
