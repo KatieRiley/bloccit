@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
   validates :body, length: {minimum: 20}, presence: true
   validates :topic, presence: true
   validates :user, presence: true
+  after_create :favorte_post
 
   def up_votes
     votes.where(value: 1).count
@@ -31,4 +32,12 @@ class Post < ActiveRecord::Base
     update_attribute(:rank, new_rank)
   end
 
+
+  private
+
+  def favorte_post
+    user.favorite_for(self)
+    favorites.where(post_id: self.id).first
+    FavoriteMailer.new_post(user, self).deliver_now
+  end
 end
