@@ -11,8 +11,7 @@
       <div class="media-body">
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
-          <%= pluralize(@user.posts.count, 'post') %>,
-          <%= pluralize(@user.comments.count, 'comment') %>
+          <%= render partial: 'user', locals: {user: @user} %>
         </small>
       </div>
     </div>

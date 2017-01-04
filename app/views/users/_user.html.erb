@@ -1,0 +1,11 @@
+<% if user.posts != nil %>
+  <%= pluralize(@user.posts.count, 'post') %>
+<% else %>
+  <%= "{user.name} has not submitted any posts yet" %>
+<% end %>
+
+<% if user.comments != nil %>
+  <%= pluralize(@user.comments.count, 'comment') %>
+<% else %>
+  <%= "{user.name} has not submitted any comments yet" %>
+<% end %>
